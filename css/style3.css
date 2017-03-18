@@ -1,0 +1,346 @@
+/*! 这里是打包文件头部注释！ */
+.sidebar-menu > li > a {
+    border-top: 1px solid #2a2d3e
+}
+
+.skin-blue .sidebar a {
+    background: #1e282c;
+    color: #fff
+}
+
+.skin-blue .treeview-menu > li > a {
+    background: #2c3b41
+}
+
+.sidebar-menu .treeview-menu > li > a {
+    padding: 8px 5px 8px 15px
+}
+
+.skin-blue .left-side, .skin-blue .main-sidebar, .skin-blue .wrapper {
+    background: #1e282c
+}
+
+.skin-blue .treeview-menu > li > a {
+    color: #fff
+}
+
+.skin-blue .treeview-menu > li > a:hover {
+    color: #3c8dbc
+}
+
+.sidebar-menu .treeview-menu {
+    padding: 0
+}
+
+.sidebar-menu li.active > a > .pull-right-container > .fa-angle-down {
+    transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg)
+}
+
+.btn-default {
+    background: #fff
+}
+
+.air-div .btn {
+    margin-right: 10px
+}
+
+div.dataTables_paginate {
+    text-align: right
+}
+
+div.dataTables_paginate ul.pagination {
+    margin: 2px 0;
+    white-space: nowrap
+}
+
+.dataTables_info {
+    line-height: 30px
+}
+
+.main-footer {
+    text-align: center;
+    background: #ecf0f5;
+    border: none
+}
+
+.main-footer a {
+    color: #444
+}
+
+.logo img {
+    height: 45px;
+    vertical-align: middle
+}
+
+.navbar-nav {
+    font-size: 12px
+}
+
+.content-header > h1 {
+    font-size: 22px
+}
+
+.navbar-nav > .user-menu > .dropdown-menu {
+    width: 100px
+}
+
+.sidebar-menu .treeview-menu > li > a > .fa {
+    width: 15px
+}
+
+.content-header {
+    min-height: 38px
+}
+
+.content-header > .breadcrumbNav {
+    left: 10px
+}
+
+.content .fa-fw {
+    margin-right: 5px;
+    cursor: pointer
+}
+
+.content .glyphicon-cog {
+    cursor: pointer
+}
+
+.modal-dialog .modal-content {
+    border-radius: 6px
+}
+
+.modal-cm {
+    width: 450px
+}
+
+#btn-warning {
+    position: absolute;
+    left: 80px;
+    top: -48px
+}
+
+.dialogContent {
+    width: 500px;
+    margin: 0 auto;
+    background: #fff
+}
+
+.dialogContent .top img {
+    width: 250px;
+    height: 150px;
+    float: left
+}
+
+.dialogContent .top .info {
+    float: left;
+    margin-left: 10px
+}
+
+.dialogContent .top .info li {
+    padding-bottom: 10px
+}
+
+.dialogContent .top .info li b {
+    color: #f43255;
+    font-size: 15px
+}
+
+.dialogContent table {
+    width: 100%;
+    margin-top: 25px
+}
+
+.dialogContent table td {
+    padding-bottom: 10px
+}
+
+.dialogContent table td input {
+    margin-right: 5px
+}
+
+.dialogContent table.tableCN td {
+    padding-bottom: 40px
+}
+
+.dialogContent h2 {
+    font-size: 20px;
+    color: #008200;
+    padding: 10px 0
+}
+
+.dialogContent .btn-fenKe, .dialogContent .btn-submit {
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    display: block;
+    margin: 10px auto;
+    background: #109457;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px
+}
+
+.content-header > .breadcrumb {
+    position: static;
+    float: left
+}
+
+.msg-tip {
+    width: 100%;
+    position: fixed;
+    top: 35%;
+    left: 0;
+    text-align: center;
+    z-index: 9999
+}
+
+.msg-tip span {
+    background-color: rgba(0, 0, 0, .8);
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    display: inline-block
+}
+
+.confirm {
+    width: 280px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -140px;
+    margin-top: -70px;
+    border-radius: 10px;
+    background: #fff;
+    text-align: center;
+    z-index: 9999;
+    color: #333
+}
+
+.confirm .content {
+    padding: 20px 0 10px
+}
+
+.confirm h2 {
+    font-size: 16px;
+    padding-bottom: 5px
+}
+
+.confirm .confirm-bottom {
+    border-top: 1px solid #eee;
+    line-height: 40px
+}
+
+.confirm .confirm-bottom a {
+    display: inline-block;
+    width: 50%;
+    color: #007aff;
+    font-size: 16px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
+}
+
+.confirm .confirm-bottom a:first-child {
+    border-right: 1px solid #eee
+}
+
+.confirm .confirm-bottom-single a {
+    width: 100%;
+    border-right: none
+}
+
+.confirm .confirm-bottom-single a:first-child {
+    border-right: none
+}
+
+.load {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #ccc
+}
+
+.load a {
+    color: #bfbfbf
+}
+
+.load img {
+    width: 20px;
+    padding-right: 5px
+}
+
+.loading {
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    margin: -20px 0 0 -20px;
+    left: 50%;
+    top: 35%;
+    z-index: 99999;
+    -webkit-animation: rotation .6s infinite linear;
+    animation: rotation .6s infinite linear;
+    border-left: 4px solid rgba(47, 60, 87, .15);
+    border-right: 4px solid rgba(47, 60, 87, .15);
+    border-bottom: 4px solid rgba(47, 60, 87, .15);
+    border-top: 4px solid rgba(47, 60, 87, .75);
+    border-radius: 100%
+}
+
+.padding_0 {
+    padding-left: 0;
+    padding-right: 0
+}
+
+.padding_1 {
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+.login-page {
+    background: url(/airport/dist/./img/bg.jpg) repeat 50%
+}
+
+.webuploader-container {
+    position: relative
+}
+
+.webuploader-element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px)
+}
+
+.webuploader-pick {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: #00b7ee;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden
+}
+
+.webuploader-pick-hover {
+    background: #00a2d4
+}
+
+.webuploader-pick-disable {
+    opacity: .6;
+    pointer-events: none
+}
+
+.inputTable > tbody > tr > td, .inputTable > tbody > tr > th, .inputTable > tfoot > tr > td, .inputTable > tfoot > tr > th, .inputTable > thead > tr > td, .inputTable > thead > tr > th {
+    vertical-align: middle
+}
+
+h3.box-title {
+    color: #333;
+    font-weight: 700
+}
