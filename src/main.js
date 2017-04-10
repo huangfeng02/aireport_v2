@@ -8,8 +8,11 @@ Vue.config.productionTip = false
 var sidebar =require("./components/sidebar.vue");
 var topHeader =require("./components/main-header.vue");
 
-//import VeeValidate from 'vee-validate';
-//Vue.use(VeeValidate);
+
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+Vue.use(ElementUI)
+
 var main_sidebar = new Vue({
     el: '#main-sidebar',
     components:{sidebar}
@@ -25,4 +28,29 @@ new Vue({
   router,
   template: '<App/>',
   components: { App }
+})
+
+router.beforeEach((to, from, next) => {
+
+    if(to.meta.requiresAuth){
+        next()
+       /* $.ajax({
+            type: "POST",
+            dataType: "json",
+            data:{
+                ykfci_csrf_token:csrf_hash
+            },
+            url: "/apply/is_login",
+            success: function (res) {
+                if(res.error==1){
+                    next()
+                }else {
+
+                }
+            },
+            error: function () {alert("失败，请稍后再试！")},
+        });*/
+    }else {
+        next()
+    }
 })

@@ -30,7 +30,7 @@
                     <li><a href="#">我的订单</a></li>
                     <li class="dropdown user user-menu">
                         <a data-toggle="" class="" href="#">
-                            <img alt="User Image" class="user-image" src="../../image/head.jpg">
+                            <img alt="User Image" class="user-image" src="/static/image/head.jpg">
                             <span class="hidden-xs" @click="loginOut">退出</span>
                         </a>
                         <ul class="dropdown-menu">
