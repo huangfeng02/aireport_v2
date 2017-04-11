@@ -3,8 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
 
-        <button data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-primary pull-right" type="button">新增报关</button>
-        <button class="btn btn-sm btn-primary pull-right" type="button" style="margin-right: 20px;">费用申请</button>
+        <button data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-primary pull-right" type="button">新增询价</button>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
             <li><a href="#">订单管理</a></li>
@@ -48,61 +47,54 @@
                     <div class="box-body table-responsive no-padding">
                         <ul class="nav nav-tabs" style="padding-left: 20px;margin-top: 10px;">
                             <li class="active"><a data-toggle="tab" href="#tab_1" aria-expanded="true">待处理</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab_2" aria-expanded="false">待确认</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab_3" aria-expanded="false">已经转单</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab_4" aria-expanded="false">已删除</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab_2" aria-expanded="false">报价草稿</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab_3" aria-expanded="false">待确认</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab_4" aria-expanded="false">客户已确认</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab_5" aria-expanded="false">已转订单</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab_6" aria-expanded="false">已作废</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab_7" aria-expanded="false">我的所有报价</a></li>
                         </ul>
                         <table class="table table-hover">
                             <tbody>
                             <tr>
                                 <th><input type="checkbox" v-model="checkedAll"></th>
                                 <th>编号</th>
+                                <th>业务类型</th>
                                 <th>客户</th>
                                 <th>品名</th>
+                                <th>件数</th>
                                 <th>重量（KG）</th>
+                                <th>方数（cbm）</th>
+                                <th>密度</th>
+                                <th>尺寸</th>
                                 <th>出发地</th>
                                 <th>目的地</th>
-                                <th>报价CNY/KG</th>
-                                <th>航空公司</th>
+                                <th>送货日期</th>
                                 <th>交货日期</th>
                                 <th>当前状态</th>
                                 <th>操作</th>
                             </tr>
-                            <tr>
+                            <tr v-for="item in items">
                                 <td><input type="checkbox"></td>
-                                <td>0909</td>
-                                <td>客户A</td>
-                                <td>玩具</td>
-                                <td>60</td>
-                                <td>CAN-广州</td>
-                                <td>NRT-京东成田</td>
-                                <td>18.5</td>
-                                <td>CA</td>
-                                <td>2016-04-20</td>
-                                <td>报价草稿</td>
-
+                                <td>{{item.id}}</td>
+                                <td>{{item.typeName}}</td>
+                                <td>{{item.customerName}}</td>
+                                <td>{{item.goodsName}}</td>
+                                <td>{{item.jianShu}}</td>
+                                <td>{{item.weight}}</td>
+                                <td>{{item.cbm}}</td>
+                                <td>{{item.miDu}}</td>
+                                <td>{{item.chiCun}}</td>
+                                <td>{{item.fromCode}}-{{item.from}}</td>
+                                <td>{{item.destCode}}-{{item.dest}}</td>
+                                <td>{{item.songHuoRiQi}}</td>
+                                <td>{{item.jiaohuoRiQi}}</td>
+                                <td>{{item.state}}</td>
                                 <td>
-                                    <router-link :to="{name:'InquiryDetails'}">修改</router-link>
+                                    <router-link :to="{name:'InquiryDetails'}" v-if="item.chongXinXunjia==1">修改</router-link>
+                                    <router-link :to="{name:'InquiryPage'}" v-else>询价</router-link>
                                 </td>
                             </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>0909</td>
-                                <td>客户A</td>
-                                <td>玩具</td>
-                                <td>60</td>
-                                <td>CAN-广州</td>
-                                <td>NRT-京东成田</td>
-                                <td>18.5</td>
-                                <td>CA</td>
-                                <td>2016-04-20</td>
-                                <td>报价草稿</td>
-
-                                <td>
-                                    <router-link :to="{name:'InquiryPage'}">询价</router-link>
-                                </td>
-                            </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -119,11 +111,10 @@
 
 
     </section>
+
+      <list-modal :supplier-info="supplierInfo"></list-modal>
     </div>
 
-<!--
-    <list-modal :rule-info="ruleInfo"></list-modal>
--->
 
 </template>
 
@@ -131,12 +122,16 @@
 
     import pagNav from '../../components/pagination.vue'
     import util from '../../components/util.js'
-    //import listModal from './listCustomsModal.vue'
+    import listModal from './listInquiryModal.vue'
 
     var searchDate={
         pageNum:1,
         pageSize:10,
-        filters:{}
+        filters:{
+          rules:[
+            {"field":"state", "data":"0","op":"eq","type":"int"}
+          ]
+        }
     }
     export default {
         data:function(){
@@ -148,18 +143,20 @@
                 current: 1,
                 searchKey:'',
                 supplierId:'',
-                bookingInfo:{
-                    //id:'',
-                    supplierId:"2332",
-                    company:'CA',
-                    nameEn:'20160501',
-                    nameCh:'20160501',
-                    department:'20160503',
-                    title:'33'
-                }
+              supplierInfo:{
+                shortName:'',
+                nameEn:'',
+                nameCh:'',
+                type:'',
+                address:'',
+                remark:'',
+                intro:'',
+                businessLicense:'',
+                status:''
+              }
             }
         },
-        components:{pagNav},
+        components:{pagNav,listModal},
         computed: {
             checkedAll: {
                 get: function () {
@@ -268,10 +265,10 @@
                 })
 
             },
-            listContact:function(){
+            listInquiry:function(){
                 var _this=this;
                 $.ajax({
-                    url: '/airlogis/crm/supplier/listContact',
+                    url: '/airlogis/xunjia/listXunjia',
                     data:searchDate,
                     contentType: "application/json",
                     dataType: "json",
@@ -297,8 +294,11 @@
             }
 
         },
+        created: function () {
+            this.listInquiry();
+        },
         mounted:function(){
-
+          console.log('listInquiry');
         }
     }
 

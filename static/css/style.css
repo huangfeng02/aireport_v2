@@ -155,3 +155,17 @@ div.dataTables_paginate ul.pagination{margin:2px 0;white-space:nowrap}
     vertical-align: middle
 }
 h3.box-title{color: #333;font-weight: bold}
+.modal-in{
+  width: 700px;
+  max-height:92%;
+}
+.modal-in .modal-body{
+  padding:0;
+}
+.modal-in  .form-group {
+  margin-bottom: 12px;
+}
+.modal-in .box-footer{
+  text-align: right;
+}
+
