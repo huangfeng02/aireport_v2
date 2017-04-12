@@ -112,7 +112,7 @@
 
     </section>
 
-      <list-modal :supplier-info="supplierInfo"></list-modal>
+      <list-modal :inquiry-info="inquiryInfo" @submit="submit"></list-modal>
     </div>
 
 
@@ -143,17 +143,22 @@
                 current: 1,
                 searchKey:'',
                 supplierId:'',
-              supplierInfo:{
-                shortName:'',
-                nameEn:'',
-                nameCh:'',
-                type:'',
-                address:'',
-                remark:'',
-                intro:'',
-                businessLicense:'',
-                status:''
-              }
+                inquiryInfo:{
+                  id:'',
+                  typeName:'',
+                  customerName:'',
+                  goodsName:'',
+                  jianShu:'',
+                  weight:'',
+                  cbm:'',
+                  miDu:'',
+                  chiCun:'',
+                  from:'',
+                  dest:'',
+                  songHuoRiQi:'',
+                  jiaohuoRiQi:'',
+                  state:0
+                }
             }
         },
         components:{pagNav,listModal},
@@ -181,7 +186,7 @@
         methods:{
             pagechange: function (p) {
                 searchDate.pageNum=p;
-                this.listContact(searchDate);
+                this.listInquiry(searchDate);
             },
             update:function(data){
                 var _this=this;
@@ -203,11 +208,11 @@
                 })
             },
             submit:function(data){
+                console.log('list submit')
                 var _this=this;
                 var data = JSON.stringify(data);
-
                 $.ajax({
-                    url: '/airlogis/crm/supplier/addContact',
+                    url: '/airlogis/xunjia/addXunjia',
                     contentType: "application/json",
                     dataType: "json",
                     type: "post",
@@ -215,7 +220,7 @@
                     success: function (data) {
                         util.alertMsgTip(data.message)
                         $('#myModal').modal('hide')
-                        _this.listContact(searchDate);
+                        _this.listInquiry(searchDate);
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         util.alertMsgTip(JSON.parse(xhr.responseText).message)
@@ -298,7 +303,7 @@
             this.listInquiry();
         },
         mounted:function(){
-          console.log('listInquiry');
+
         }
     }
 
